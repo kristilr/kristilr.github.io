@@ -133,7 +133,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   padding: 2.2rem 1.5rem 2rem 0.75rem; background: #fff; z-index: 20;
 }
 .sidebar-name { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; line-height: 1.35; color: var(--ink); }
-.sidebar-roles { font-size: 0.7rem; font-weight: 300; color: var(--mid, #5a5a5a); line-height: 1.65; margin-top: 0.9rem; }
+.sidebar-roles { font-size: 0.7rem; font-weight: 300; color: var(--mid, #5a5a5a); line-height: 1.65; margin-top: 0.35rem; }
 .sidebar-logo { margin-top: 1.1rem; width: 64px; height: 64px; object-fit: contain; }
 .sidebar-link { margin-top: 1rem; font-size: 0.7rem; font-weight: 300; color: var(--mid, #5a5a5a); text-decoration: none; }
 .sidebar-link:hover { color: var(--ink); }
@@ -359,8 +359,6 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 </div>
   </main>
 </div>
-
-
 <div class="ink-drop" id="inkDrop"></div>
 <script>
 (function() {
@@ -372,7 +370,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   document.addEventListener('mouseleave', () => drop.style.opacity = '0');
   document.addEventListener('mouseenter', () => drop.style.opacity = '1');
 
-  const interactables = 'a, button, .win-cell, .fs-cell, .skill-cell, .content-cell, .pillar-cell, .mandate-line, .format-row, .pub-row, .entry-video, .film-entry, .rb-cell, .qoq-cell, .lift-cell, .tl-item';
+  const interactables = 'a, button, .t-cta, .fs-cell, .page-nav a, .sidebar-link';
   document.querySelectorAll(interactables).forEach(el => {
     el.addEventListener('mouseenter', () => drop.classList.add('hovering'));
     el.addEventListener('mouseleave', () => drop.classList.remove('hovering'));
@@ -386,21 +384,22 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
     px = lerp(px, cx, 0.28);
     py = lerp(py, cy, 0.28);
 
-    const stretch = Math.min(speed * 0.18, 1.8);
-    const angle = Math.atan2(vy, vx) * 180 / Math.PI;
-    const scaleX = 1 + stretch;
-    const scaleY = Math.max(1 - stretch * 0.45, 0.35);
+    if (!drop.classList.contains('hovering')) {
+      const stretch = Math.min(speed * 0.18, 1.8);
+      const angle = Math.atan2(vy, vx) * 180 / Math.PI;
+      const scaleX = 1 + stretch;
+      const scaleY = Math.max(1 - stretch * 0.45, 0.35);
+      drop.style.transform = `translate(-50%, -50%) rotate(${angle}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
+    } else {
+      drop.style.transform = 'translate(-50%, -50%)';
+    }
 
     drop.style.left = px + 'px';
     drop.style.top  = py + 'px';
-    drop.style.transform = `translate(-50%, -50%) rotate(${angle}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
-    drop.style.borderRadius = speed > 2 ? '40%' : '50%';
-
     requestAnimationFrame(tick);
   }
   tick();
 })();
 </script>
-
 </body>
 </html>
