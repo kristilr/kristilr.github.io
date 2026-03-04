@@ -17,10 +17,11 @@
 html, body { min-height: 100%; }
 body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; font-weight: 100; }
 
-.corner { position: fixed; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.9; z-index: 10; }
+.corner { position: fixed; font-size: 0.62rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.9; z-index: 10; }
 .corner-tl { top: 1.75rem; left: 2.5rem; }
 .corner-tr { top: 1.75rem; right: 2.5rem; text-align: right; color: var(--accent); }
 .corner-bl { bottom: 1.75rem; left: 2.5rem; }
+.corner-br { bottom: 1.75rem; right: 2.5rem; }
 .corner a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; transition: color 0.2s; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; }
 .corner a:hover { color: var(--accent); }
 
@@ -63,7 +64,7 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
 </head>
 <body>
 
-<div class="corner corner-tl">Kristil Rabideau</div>
+<div class="corner corner-tl"><a href="index.html" style="text-decoration:none;color:inherit;">Kristil Rabideau</a></div>
 <div class="corner corner-tr">02 · PERS ·</div>
 <div class="corner corner-bl"><a href="case-studies.html">← Case Studies</a></div>
 
@@ -133,5 +134,6 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
   </div>
 
 </div>
+<div class="corner corner-br"><a href="case-studies.html">Case Studies →</a></div>
 </body>
 </html>

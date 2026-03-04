@@ -192,14 +192,34 @@ svg.ring { width: 80px; height: 80px; }
 /* REVEAL */
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* CORNERS */
+.pg-corner {
+  position: fixed;
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.9;
+  z-index: 100;
+}
+.pg-corner a { color: #111111; text-decoration: none; transition: color 0.2s; }
+.pg-corner a:hover { color: #FFB3DA; }
+.pg-corner-tl { top: 1.75rem; left: 2.5rem; }
+.pg-corner-bl { bottom: 1.75rem; left: 2.5rem; }
+.pg-corner-br { bottom: 1.75rem; right: 2.5rem; }
 </style>
 </head>
 <body>
+<div class="pg-corner pg-corner-tl"><a href="index.html">Kristil Rabideau</a></div>
+<div class="pg-corner pg-corner-bl"><a href="case-studies.html">← Case Studies</a></div>
+<div class="pg-corner pg-corner-br"><a href="case-studies.html">Case Studies →</a></div>
+
 <div class="wrap">
 
   <!-- HEADER -->
   <div class="hd reveal">
-    <div class="hd-title">Jellysmack <span>·</span> The Noisy Dish</div>
+    <div class="hd-title">Jellysmack</div>
     <div class="hd-meta">Kristil Rabideau · 2022–2023<br>Content Strategy · Scriptwriting · Video</div>
   </div>
 
@@ -418,7 +438,7 @@ svg.ring { width: 80px; height: 80px; }
 
   <div class="viz-footer reveal">
     <p>Kristil Rabideau</p>
-    <p>Jellysmack · The Noisy Dish · 2022–2023</p>
+    <p>Jellysmack · 2022–2023</p>
     <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="097b686b606d6c687c627b607a7d6065496e64686065276a6664">[email&#160;protected]</a></p>
   </div>
 
