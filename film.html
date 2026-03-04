@@ -12,7 +12,7 @@ html, body { min-height: 100%; }
 body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-serif; font-weight: 300; }
 
 
-.page { max-width: 780px; margin: 0 auto; padding: 7rem 2.5rem 8rem; }
+.page { max-width: 960px; margin: 0; padding: 4rem 2.5rem 6rem; }
 
 /* PAGE HEADER */
 .pg-header { margin-bottom: 5rem; border-bottom: 1px solid var(--rule); padding-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end; }
@@ -58,9 +58,98 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 }
 /* DIVIDER */
 .divider { height: 1px; background: var(--rule); margin-bottom: 5.5rem; }
+
+:root { --sidebar: 195px; --inset: 195px; }
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+  width: var(--sidebar); flex-shrink: 0; min-height: 100vh;
+  position: fixed; left: 0; top: 0;
+  display: flex; flex-direction: column; align-items: flex-end; text-align: right;
+  padding: 2.2rem 1.5rem 2rem 0.75rem; background: #fff; z-index: 20;
+}
+.sidebar-name { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; line-height: 1.35; color: var(--ink); }
+.sidebar-roles { font-size: 0.7rem; font-weight: 300; color: var(--mid, #5a5a5a); line-height: 1.65; margin-top: 0.9rem; }
+.sidebar-logo { margin-top: 1.1rem; width: 64px; height: 64px; object-fit: contain; }
+.sidebar-link { margin-top: 1rem; font-size: 0.7rem; font-weight: 300; color: var(--mid, #5a5a5a); text-decoration: none; }
+.sidebar-link:hover { color: var(--ink); }
+.scroll-area { width: 100%; overflow-x: hidden; }
+.scroll-area { padding-left: var(--sidebar); } .page { margin: 0; }
+.page-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 2rem 2.5rem 3rem;
+  border-top: 1px solid var(--rule, #e0e0e0);
+  margin-top: 2rem;
+}
+.page-nav a {
+  font-size: 0.72rem; font-weight: 400; color: var(--mid, #5a5a5a);
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.page-nav a:hover { color: var(--ink); }
+.page-nav .nav-pink { color: var(--pink, #e8a0c0); }
+.page-nav .nav-pink:hover { opacity: 0.7; }
+
+/* ── ROLE BREAKDOWN ── */
+.role-breakdown { margin-bottom: 4rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+.rb-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.75rem; }
+.rb-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.rb-note { font-size: 0.68rem; font-weight: 300; color: var(--muted); font-style: italic; }
+.rb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
+.rb-cell { background: #fff; padding: 1.75rem 1.5rem; }
+.rb-cell:hover { background: var(--accent-light); }
+.rb-role { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.5rem; }
+.rb-projects { font-size: 0.78rem; font-weight: 300; color: var(--ink); line-height: 1.7; }
+.rb-projects span { color: var(--muted); font-size: 0.68rem; }
+
+/* ── PROJECT STAT ROW ── */
+.film-stats a.fs-cell { text-decoration: none; cursor: pointer; transition: background 0.2s; }
+.film-stats a.fs-cell:hover { background: var(--accent-light, #fff0f7); }
+.film-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); margin-bottom: 4rem; }
+.fs-cell { background: #fff; padding: 1.5rem; }
+.fs-project { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.4rem; }
+.fs-type { font-size: 1rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem; }
+.fs-roles { font-size: 0.68rem; font-weight: 300; color: var(--accent); line-height: 1.6; }
+
+
+/* horizontal bar */
+.cursor-h::before {
+  width: 18px; height: 1px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* vertical bar */
+.cursor-h::after {
+  width: 1px; height: 18px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* ── INK DROP CURSOR ── */
+*, *::before, *::after { cursor: none !important; }
+.ink-drop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  background: #e8a0c0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
 </style>
 </head>
 <body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-name">KRISTIL<br>RABIDEAU</div>
+    <div class="sidebar-roles">Content Creation<br>Editorial Direction<br>Social Management</div>
+    <img src="logo.gif" class="sidebar-logo" alt="">
+    <a class="sidebar-link" href="index.html">← Home</a>
+  </aside>
+  <main class="scroll-area">
 
 
 <div class="page">
@@ -70,10 +159,64 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
     <div class="pg-note">Selected video production work.</div>
   </div>
 
+
+  <!-- PROJECT STAT ROW -->
+  <div class="film-stats">
+    <a class="fs-cell" href="#nike-boxing">
+      <span class="fs-project">Nike Boxing</span>
+      <div class="fs-type">Spec Brand Commercial</div>
+      <div class="fs-roles">Editor · Colorist · Sound Design · Motion Graphics</div>
+    </a>
+    <a class="fs-cell" href="#setting-things-on-fire">
+      <span class="fs-project">Setting Things on Fire</span>
+      <div class="fs-type">Spec Music Video</div>
+      <div class="fs-roles">Editor · Colorist</div>
+    </a>
+    <a class="fs-cell" href="#city-of-love">
+      <span class="fs-project">City of Love</span>
+      <div class="fs-type">Short-Form Documentary</div>
+      <div class="fs-roles">Director · DP · Editor · Colorist · Motion Graphics</div>
+    </a>
+  </div>
+
+  <!-- ROLE BREAKDOWN -->
+  <div class="role-breakdown">
+    <div class="rb-header">
+      <span class="rb-label">Disciplines Across Projects</span>
+      <span class="rb-note">Post-production · direction · design</span>
+    </div>
+    <div class="rb-grid">
+      <div class="rb-cell">
+        <span class="rb-role">Editing</span>
+        <div class="rb-projects">All three projects <span>· narrative, commercial, music video</span></div>
+      </div>
+      <div class="rb-cell">
+        <span class="rb-role">Color Grading</span>
+        <div class="rb-projects">All three projects <span>· custom grade per visual identity</span></div>
+      </div>
+      <div class="rb-cell">
+        <span class="rb-role">Direction / DP</span>
+        <div class="rb-projects">City of Love <span>· unscheduled street doc, Montmartre</span></div>
+      </div>
+      <div class="rb-cell">
+        <span class="rb-role">Sound Design</span>
+        <div class="rb-projects">Nike Boxing <span>· rebuilt VO from unrelated interview material</span></div>
+      </div>
+      <div class="rb-cell">
+        <span class="rb-role">Motion Graphics</span>
+        <div class="rb-projects">Nike Boxing · City of Love <span>· bold type, branded graphics</span></div>
+      </div>
+      <div class="rb-cell">
+        <span class="rb-role">Format</span>
+        <div class="rb-projects">Brand spot · music video · documentary <span>· three distinct formats</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- NIKE BOXING -->
-  <div class="film-entry">
+  <div class="film-entry" id="nike-boxing">
     <div class="film-video">
-      <!-- <video src="nike-boxing.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
+      <video src="nike-boxing.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
       <div class="film-video-ph"><span>Nike Boxing</span></div>
     </div>
         <div class="film-body">
@@ -93,9 +236,9 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   <div class="divider"></div>
 
   <!-- SETTING THINGS ON FIRE -->
-  <div class="film-entry">
+  <div class="film-entry" id="setting-things-on-fire">
     <div class="film-video">
-      <!-- <video src="setting-things-on-fire.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
+      <video src="setting-things-on-fire.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
       <div class="film-video-ph"><span>Setting Things on Fire</span></div>
     </div>
         <div class="film-body">
@@ -115,9 +258,9 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   <div class="divider"></div>
 
   <!-- CITY OF LOVE -->
-  <div class="film-entry">
+  <div class="film-entry" id="city-of-love">
     <div class="film-video">
-      <!-- <video src="city-of-love.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
+      <video src="city-of-love.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
       <div class="film-video-ph"><span>City of Love</span></div>
     </div>
         <div class="film-body">
@@ -135,5 +278,49 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   </div>
 
 </div>
+
+<div class="page-nav">
+  <a href="writers.html">← Studio R–M</a>
+  
+</div>
+  </main>
+</div>
+
+
+<div class="ink-drop" id="inkDrop"></div>
+<script>
+(function() {
+  const drop = document.getElementById('inkDrop');
+  let cx = -100, cy = -100, px = -100, py = -100;
+  let vx = 0, vy = 0;
+
+  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+  document.addEventListener('mouseleave', () => drop.style.opacity = '0');
+  document.addEventListener('mouseenter', () => drop.style.opacity = '1');
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function tick() {
+    vx = cx - px; vy = cy - py;
+    const speed = Math.sqrt(vx*vx + vy*vy);
+    px = lerp(px, cx, 0.28);
+    py = lerp(py, cy, 0.28);
+
+    const stretch = Math.min(speed * 0.18, 1.8);
+    const angle = Math.atan2(vy, vx) * 180 / Math.PI;
+    const scaleX = 1 + stretch;
+    const scaleY = Math.max(1 - stretch * 0.45, 0.35);
+
+    drop.style.left = px + 'px';
+    drop.style.top  = py + 'px';
+    drop.style.transform = `translate(-50%, -50%) rotate(${angle}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
+    drop.style.borderRadius = speed > 2 ? '40%' : '50%';
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+
 </body>
 </html>

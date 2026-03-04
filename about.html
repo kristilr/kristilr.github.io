@@ -7,88 +7,144 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --pink: #FFB3DA; --ink: #2a2a2a; --muted: #666666; --rule: #e8e8e8; }
-html, body { height: 100%; }
-body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-serif; font-weight: 100; overflow: hidden; }
-.corner { position: fixed; font-size: 0.62rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.9; z-index: 10; }
-.corner-tl { top: 1.75rem; left: 2.5rem; }
-.corner-tr { top: 1.75rem; right: 2.5rem; text-align: right; color: var(--pink); }
-.corner-bl { bottom: 1.75rem; left: 2.5rem; }
-.corner-br { bottom: 1.75rem; right: 2.5rem; }
-.corner a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; transition: color 0.2s; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; }
-.corner a:hover { color: var(--pink); }
+:root {
+  --ink: #2a2a2a; --mid: #5a5a5a; --muted: #999;
+  --pink: #e8a0c0; --rule: #e0e0e0;
+  --sidebar: 195px; --inset: 195px;
+}
+html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-serif; font-weight: 300; background: #fff; color: var(--ink); }
 
-.center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 560px;
-  width: 100%;
-  padding: 0 2.5rem;
+.layout { display: flex; height: 100vh; }
+
+.sidebar {
+  width: var(--sidebar); flex-shrink: 0; height: 100vh;
+  position: fixed; left: 0; top: 0;
+  display: flex; flex-direction: column; align-items: flex-end; text-align: right;
+  padding: 2.2rem 1.5rem 2rem 0.75rem; background: #fff; z-index: 20;
+}
+.sidebar-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em; line-height: 1.35; color: var(--ink); }
+.sidebar-roles { font-size: 0.65rem; font-weight: 300; color: var(--mid); line-height: 1.65; margin-top: 0.9rem; }
+.sidebar-logo { margin-top: 1.1rem; width: 64px; height: 64px; object-fit: contain; }
+.sidebar-link { margin-top: 1rem; font-size: 0.65rem; font-weight: 300; color: var(--mid); text-decoration: none; }
+.sidebar-link:hover { color: var(--ink); }
+
+.scroll-area { width: 100%; height: 100vh; overflow-y: auto; overflow-x: hidden; }
+
+.page {
+  padding: 4rem var(--inset) 6rem var(--sidebar);
+  max-width: calc(var(--sidebar) + 620px + var(--inset));
 }
 
-.about-label {
-  font-size: 0.62rem;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 2rem;
-  display: block;
-}
+.about-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; display: block; }
+.about-name { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+.about-body { font-size: 0.88rem; font-weight: 300; line-height: 1.9; color: var(--ink); }
+.about-body p { margin-bottom: 1.1rem; }
+.about-body p:last-child { margin-bottom: 0; }
 
-.about-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 2rem;
-}
-
-.about-body {
-  font-size: 0.95rem;
-  font-weight: 100;
-  line-height: 1.95;
-  color: var(--ink);
-  margin-bottom: 2.5rem;
-}
-
-.about-body .pink { color: var(--pink); }
-
-.contact-row {
-  display: flex;
-  gap: 3rem;
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
-}
-
-.contact-item { }
-.contact-label { font-size: 0.5rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; display: block; }
-.contact-val { font-size: 0.75rem; font-weight: 100; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+.contact-row { display: flex; gap: 3rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; margin-top: 2.5rem; }
+.contact-label { font-size: 0.55rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.25rem; display: block; }
+.contact-val { font-size: 0.78rem; font-weight: 300; color: var(--ink); text-decoration: none; }
 .contact-val:hover { color: var(--pink); }
+
+
+/* horizontal bar */
+.cursor-h::before {
+  width: 18px; height: 1px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* vertical bar */
+.cursor-h::after {
+  width: 1px; height: 18px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* ── INK DROP CURSOR ── */
+*, *::before, *::after { cursor: none !important; }
+.ink-drop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  background: #e8a0c0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
 </style>
 </head>
 <body>
-
-<div class="corner corner-tl"><a href="index.html" style="text-decoration:none;color:inherit;">Kristil Rabideau</a></div>
-<div class="corner corner-tr">About ·</div>
-<div class="corner corner-bl"><a href="index.html">← Home</a></div>
-
-<div class="center">
-  <span class="about-label">About Me</span>
-  <h1 class="about-name">Kristil Rabideau</h1>
-  <p class="about-body">
-    I'm a digital marketing strategist specializing in content creation, growth strategy, and video production. I immerse myself in current trends to <span class="pink">constantly improve</span> digital marketing technique and provide <span class="pink">data-driven results.</span><br><br>
-    Whether I'm writing scripts, crafting taglines, defining brand voice, or building content systems from scratch — I work closely with founders and teams to turn strategy into something measurable.
-  </p>
-  <div class="contact-row">
-    <div class="contact-item">
-      <span class="contact-label">Email</span>
-      <a class="contact-val" href="/cdn-cgi/l/email-protection#5022313239343531253b22392324393c10373d31393c7e333f3d"><span class="__cf_email__" data-cfemail="bcceddded5d8d9ddc9d7ced5cfc8d5d0fcdbd1ddd5d092dfd3d1">[email&#160;protected]</span></a>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-name">KRISTIL<br>RABIDEAU</div>
+    <div class="sidebar-roles">Content Creation<br>Editorial Direction<br>Social Management</div>
+    <img src="logo.gif" class="sidebar-logo" alt="">
+    <a class="sidebar-link" href="index.html">← Home</a>
+  </aside>
+  <main class="scroll-area">
+    <div class="page">
+      <span class="about-label">About</span>
+      <h1 class="about-name">Kristil Rabideau</h1>
+      <div class="about-body">
+        <p>Content strategist, editor, and writer with 5+ years of experience across digital media, social platforms, and editorial work. Background in scriptwriting, developmental editing, and platform-native content creation — from video production and motion graphics to long-form essays and narrative development.</p>
+        <p>At Jellysmack, scaled social channels from zero to viral through data-driven content strategy and A/B testing. Through Studio R–M, create scripts and copy for digital brands and provide developmental editing for writers published in The New York Times and Newsweek. Run <a href="https://lemetro.substack.com" target="_blank" style="color:var(--pink);text-decoration:underline;text-underline-offset:3px;">LE MÉTRO</a>, a Substack publication exploring literature and culture through close reading and critique.</p>
+        <p>I approach projects with both editorial rigor and strategic thinking: shaping narratives, optimizing platform-native content, and producing work that resonates with audiences and meets performance goals.</p>
+        <p>Academic background includes a BA in Literature & Creative Writing from Columbia and MAs from Uppsala University and the American University of Paris.</p>
+        <p>Seeking roles in publishing, editorial content, or content marketing where storytelling, audience engagement, and strategic thinking intersect.</p>
+      </div>
+      <div class="contact-row">
+        <div>
+          <span class="contact-label">Email</span>
+          <a class="contact-val" href="mailto:rabideaukristil@gmail.com">rabideaukristil@gmail.com</a>
+        </div>
+        <div>
+          <span class="contact-label">Phone</span>
+          <a class="contact-val" href="tel:+13192808530">+1 319 280 8530</a>
+        </div>
+      </div>
     </div>
-    <div class="contact-item">
-      <span 
+  </main>
+</div>
+
+
+<div class="ink-drop" id="inkDrop"></div>
+<script>
+(function() {
+  const drop = document.getElementById('inkDrop');
+  let cx = -100, cy = -100, px = -100, py = -100;
+  let vx = 0, vy = 0;
+
+  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+  document.addEventListener('mouseleave', () => drop.style.opacity = '0');
+  document.addEventListener('mouseenter', () => drop.style.opacity = '1');
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function tick() {
+    vx = cx - px; vy = cy - py;
+    const speed = Math.sqrt(vx*vx + vy*vy);
+    px = lerp(px, cx, 0.28);
+    py = lerp(py, cy, 0.28);
+
+    const stretch = Math.min(speed * 0.18, 1.8);
+    const angle = Math.atan2(vy, vx) * 180 / Math.PI;
+    const scaleX = 1 + stretch;
+    const scaleY = Math.max(1 - stretch * 0.45, 0.35);
+
+    drop.style.left = px + 'px';
+    drop.style.top  = py + 'px';
+    drop.style.transform = `translate(-50%, -50%) rotate(${angle}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
+    drop.style.borderRadius = speed > 2 ? '40%' : '50%';
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+
+</body>
+</html>

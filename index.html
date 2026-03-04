@@ -20,7 +20,7 @@
 
 html, body {
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; -- removed so fixed cursor works */
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 300;
   background: #fff;
@@ -46,7 +46,7 @@ html, body {
 }
 
 .sidebar-name {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   line-height: 1.35;
@@ -54,7 +54,7 @@ html, body {
 }
 
 .sidebar-roles {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 300;
   color: var(--mid);
   line-height: 1.65;
@@ -70,7 +70,7 @@ html, body {
 
 .sidebar-link {
   margin-top: 1rem;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 300;
   color: var(--mid);
   text-decoration: none;
@@ -119,7 +119,7 @@ html, body {
 /* ── CAPTION ── */
 .entry-caption {
   padding: 0.75rem 0 2rem;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 300;
   color: var(--mid);
   border-bottom: 1px solid var(--rule);
@@ -130,7 +130,7 @@ html, body {
   flex-wrap: wrap;
 }
 
-.t-title { font-weight: 500; color: var(--ink); font-size: 0.72rem; letter-spacing: 0.03em; }
+.t-title { font-weight: 500; color: var(--ink); font-size: 0.8rem; letter-spacing: 0.03em; }
 .t-sep   { color: var(--rule); }
 .t-sub   { font-style: italic; color: var(--mid); }
 .t-cta   {
@@ -154,6 +154,36 @@ html, body {
 }
 .site-footer a { color: var(--muted); text-decoration: none; }
 .site-footer a:hover { color: var(--ink); }
+
+
+/* horizontal bar */
+.cursor-h::before {
+  width: 18px; height: 1px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* vertical bar */
+.cursor-h::after {
+  width: 1px; height: 18px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* ── INK DROP CURSOR ── */
+*, *::before, *::after { cursor: none !important; }
+.ink-drop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  background: #e8a0c0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
 </style>
 </head>
 <body>
@@ -174,7 +204,7 @@ html, body {
 
     <div class="entry">
       <div class="entry-video">
-        <!-- <video src="jellysmack.mp4" autoplay muted loop playsinline></video> -->
+        <video src="jellysmack.mp4" autoplay muted loop playsinline></video>
         <div class="entry-video-ph"><span>Jellysmack</span></div>
       </div>
       <div class="entry-caption">
@@ -186,7 +216,7 @@ html, body {
 
     <div class="entry">
       <div class="entry-video">
-        <!-- <video src="pers.mp4" autoplay muted loop playsinline></video> -->
+        <video src="pers.mp4" autoplay muted loop playsinline></video>
         <div class="entry-video-ph"><span>PERS</span></div>
       </div>
       <div class="entry-caption">
@@ -198,7 +228,7 @@ html, body {
 
     <div class="entry">
       <div class="entry-video">
-        <!-- <video src="maison-toto.mp4" autoplay muted loop playsinline></video> -->
+        <video src="maison-toto.mp4" autoplay muted loop playsinline></video>
         <div class="entry-video-ph"><span>Maison Toto</span></div>
       </div>
       <div class="entry-caption">
@@ -245,11 +275,4 @@ html, body {
     </div>
 
     <footer class="site-footer">
-      <a href="mailto:rabideaukristil@gmail.com">rabideaukristil@gmail.com</a> &nbsp;·&nbsp;
-      <a href="tel:+13192808530">+1 319 280 8530</a>
-    </footer>
-
-  </main>
-</div>
-</body>
-</html>
+      <a href="/cdn-cgi/l/email-protection#2a584b48434e4f4b5f415843595e43466a4d474b434604494547"><span class="__cf_email__" data-cfemail="0d7f6c6f6469686c78667f647e7964614d6a606c6461236e6260">[em
