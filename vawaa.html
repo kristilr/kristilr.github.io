@@ -227,6 +227,21 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 .sidebar * {
   pointer-events: auto;
 }
+
+/* ── FLOATING FOOTER ── */
+.page-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2.5rem 1rem calc(var(--sidebar, 195px) + 2.5rem);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(224,224,224,0.6); z-index: 30;
+}
+.page-nav a { font-size: 0.72rem; font-weight: 400; color: var(--mid, #5a5a5a); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.page-nav a:hover { color: var(--ink, #2a2a2a); }
+.page-nav .nav-pink { color: var(--accent, #FFB3DA); }
+.page-nav .nav-email { font-size: 0.68rem; color: var(--muted, #999); text-decoration: none; }
+.page-nav .nav-email:hover { color: var(--ink, #2a2a2a); }
 </style>
 </head>
 <body>
@@ -354,15 +369,13 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
     </div>
   </div>
 
-  <div class="pullquote">
-    <p>Email marketing on a long sales cycle demands patience and precision. Built the infrastructure, wrote the sequences, documented the systems — and hit targets every quarter.</p>
-    <cite>Email Marketing · CRM · Pipeline Management · VAWAA</cite>
-  </div>
+  
 
 </div>
 
 <div class="page-nav">
   <a href="maison-toto.html">← Maison Toto</a>
+  <a class="nav-email" href="mailto:rabideaukristil@gmail.com">rabideaukristil@gmail.com</a>
   <a class="nav-pink" href="writers.html">Studio R–M →</a>
 </div>
   </main>

@@ -23,7 +23,7 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 100;
 }
-.wrap { max-width: 960px; margin: 0; padding: 4rem 2.5rem 6rem; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
 
 /* HEADER */
 .hd {
@@ -274,6 +274,27 @@ svg.ring { width: 80px; height: 80px; }
 .sidebar * {
   pointer-events: auto;
 }
+
+/* ── FLOATING FOOTER ── */
+.page-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2.5rem 1rem calc(var(--sidebar, 195px) + 2.5rem);
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(224,224,224,0.6); z-index: 30;
+}
+.page-nav a { font-size: 0.72rem; font-weight: 400; color: var(--mid, #5a5a5a); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.page-nav a:hover { color: var(--ink, #2a2a2a); }
+.page-nav .nav-pink { color: var(--accent, #FFB3DA); }
+.page-nav .nav-email { font-size: 0.68rem; color: var(--muted, #999); text-decoration: none; }
+.page-nav .nav-email:hover { color: var(--ink, #2a2a2a); }
+
+.cs-header { margin-bottom: 3rem; }
+.cs-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 400; letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 1.5rem; }
+.cs-title em { font-style: italic; color: var(--pink, #e8a0c0); }
+.cs-meta { font-size: 0.84rem; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted, #999); line-height: 2; }
+.cs-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.9; color: var(--ink, #2a2a2a); max-width: 100%; margin-bottom: 4rem; border-top: 1px solid var(--rule, #e0e0e0); padding-top: 2.5rem; }
 </style>
 </head>
 <body>
@@ -289,8 +310,9 @@ svg.ring { width: 80px; height: 80px; }
 <div class="wrap">
 
   <!-- HEADER -->
-  <div class="hd reveal">
-    <div class="hd-title">Jellysmack</div>
+  <div class="cs-header">
+    <h1 class="cs-title"><em>Jellysmack</em></h1>
+    <div class="cs-meta">Multi-Channel Social Growth · Content Strategy · Platform Management · A/B Testing · Video Production</div>
     <div style="margin-top:1rem;font-size:0.68rem;font-weight:300;color:#666;letter-spacing:0.08em;">
       See on <a href="https://www.youtube.com/@thenoisydish" target="_blank" style="color:#e8a0c0;text-decoration:underline;text-underline-offset:3px;">YouTube</a>
       &nbsp;·&nbsp;
@@ -298,6 +320,8 @@ svg.ring { width: 80px; height: 80px; }
       &nbsp;·&nbsp; Further links available upon request.
     </div>
   </div>
+
+  <p class="cs-intro">Scaled creator-led channels from zero to viral in six months — selecting growth-oriented projects, A/B testing scripts, captions, and graphics, and consistently outperforming KPIs across YouTube, TikTok, Instagram, Snapchat, and Facebook. Delivered high-volume creative output as scriptwriter, editor, and motion graphics lead, while collaborating cross-functionally to optimize production pipelines and raise the quality bar at every stage.</p>
 
   <!-- VIDEO STRIP -->
   <div class="block reveal" style="margin-bottom:3.5rem;">
@@ -581,6 +605,7 @@ document.querySelectorAll('.reveal, #viz1, #viz2, #viz3, #viz4, #viz5').forEach(
 
 <div class="page-nav">
   
+  <a class="nav-email" href="mailto:rabideaukristil@gmail.com">rabideaukristil@gmail.com</a>
   <a class="nav-pink" href="pers.html">PERS →</a>
 </div>
   </main>

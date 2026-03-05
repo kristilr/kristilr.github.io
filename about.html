@@ -10,90 +10,78 @@
 :root {
   --ink: #2a2a2a; --mid: #5a5a5a; --muted: #999;
   --pink: #e8a0c0; --rule: #e0e0e0;
-  --sidebar: 195px; --inset: 195px;
+  --sidebar: 195px;
 }
 html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-serif; font-weight: 300; background: #fff; color: var(--ink); }
-
 .layout { display: flex; height: 100vh; }
 
+/* sidebar */
 .sidebar {
   width: var(--sidebar); flex-shrink: 0; height: 100vh;
   position: fixed; left: 0; top: 0;
   display: flex; flex-direction: column; align-items: flex-end; text-align: right;
   padding: 2.2rem 1.5rem 2rem 0.75rem; background: #fff; z-index: 20;
+  pointer-events: none;
 }
+.sidebar * { pointer-events: auto; }
 .sidebar-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em; line-height: 1.35; color: var(--ink); }
 .sidebar-roles { font-size: 0.65rem; font-weight: 300; color: var(--mid); line-height: 1.65; margin-top: 0.35rem; }
 .sidebar-logo { margin-top: 1.1rem; width: 64px; height: 64px; object-fit: contain; }
 .sidebar-link { margin-top: 1rem; font-size: 0.65rem; font-weight: 300; color: var(--mid); text-decoration: none; }
 .sidebar-link:hover { color: var(--ink); }
 
+/* scroll */
 .scroll-area { width: 100%; height: 100vh; overflow-y: auto; overflow-x: hidden; }
+.page { padding: 4rem 3rem 8rem calc(var(--sidebar) + 3rem); max-width: 900px; }
 
-.page {
-  padding: 4rem var(--inset) 6rem var(--sidebar);
-  max-width: calc(var(--sidebar) + 620px + var(--inset));
-}
+/* about label */
+.about-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; display: block; }
 
-.about-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; display: block; }
-.about-name { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
-.about-body { font-size: 0.88rem; font-weight: 300; line-height: 1.9; color: var(--ink); }
+/* layout */
+.about-layout { display: flex; gap: 3.5rem; align-items: flex-start; }
+.about-body { flex: 1; font-size: 0.88rem; font-weight: 300; line-height: 1.9; color: var(--ink); }
 .about-body p { margin-bottom: 1.1rem; }
 .about-body p:last-child { margin-bottom: 0; }
 
-.contact-row { display: flex; gap: 3rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; margin-top: 2.5rem; }
-.contact-label { font-size: 0.55rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.25rem; display: block; }
+/* photo */
+.about-photo-wrap {
+  flex-shrink: 0; width: 180px; margin-top: 0.25rem;
+  animation: float-bob 5s ease-in-out infinite;
+}
+.about-photo-wrap img { width: 100%; border-radius: 50%; display: block; filter: grayscale(100%); }
+@keyframes float-bob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* floating footer */
+.about-footer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; gap: 3rem; align-items: center;
+  padding: 1rem 2.5rem 1rem calc(var(--sidebar) + 2.5rem);
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(224,224,224,0.6); z-index: 30;
+}
+.contact-label { font-size: 0.55rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.2rem; display: block; }
 .contact-val { font-size: 0.78rem; font-weight: 300; color: var(--ink); text-decoration: none; }
 .contact-val:hover { color: var(--pink); }
 
-
-/* horizontal bar */
-.cursor-h::before {
-  width: 18px; height: 1px;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-}
-/* vertical bar */
-.cursor-h::after {
-  width: 1px; height: 18px;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-
-/* ── INK DROP CURSOR ── */
+/* cursor */
 *, *::before, *::after { cursor: none !important; }
 .ink-drop {
-  position: fixed;
-  top: 0; left: 0;
-  width: 10px; height: 10px;
-  background: #e8a0c0;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  position: fixed; top: 0; left: 0; width: 10px; height: 10px;
+  background: var(--pink); border-radius: 50%; pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%); will-change: transform;
+  transition: width 0.18s, height 0.18s, background 0.18s;
 }
 .ink-drop.hovering {
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: 1.5px solid #e8a0c0;
-  animation: ink-pulse 0.9s ease-in-out infinite;
+  width: 28px; height: 28px; background: transparent; border: 1.5px solid var(--pink);
+  animation: ink-pulse 0.85s ease-in-out infinite;
 }
 @keyframes ink-pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-  50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 0.5; }
-}
-
-/* ── SIDEBAR SCROLL PASSTHROUGH ── */
-.sidebar {
-  pointer-events: none;
-}
-.sidebar * {
-  pointer-events: auto;
+  0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.9; }
+  50%       { transform: translate(-50%,-50%) scale(1.18); opacity: 0.45; }
 }
 </style>
 </head>
@@ -108,40 +96,46 @@ html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-
   <main class="scroll-area">
     <div class="page">
       <span class="about-label">About</span>
-      <h1 class="about-name">Kristil Rabideau</h1>
-      <div class="about-body">
-        <p>I'm a content strategist, editor, and writer with 5+ years of experience across digital media, social platforms, and editorial work. My background spans scriptwriting, developmental editing, and platform-native content creation — from video production and motion graphics to long-form essays and narrative development.</p>
-        <p>At Jellysmack, I scaled social channels from zero to viral through data-driven content strategy and A/B testing. Through my studio, <a href="https://www.studior-m.com" target="_blank" style="color:var(--pink);text-decoration:underline;text-underline-offset:3px;">Studio R–M</a>, I write scripts and copy for digital brands and provide developmental editing for writers who have gone on to publish in The New York Times, Newsweek, and Wired. I also run <a href="https://lemetro.substack.com" target="_blank" style="color:var(--pink);text-decoration:underline;text-underline-offset:3px;">LE MÉTRO</a>, a Substack publication exploring literature and culture through close reading and critique.</p>
-        <p>I approach every project with both editorial rigor and strategic thinking — shaping narratives, building repeatable content systems, and producing work that resonates with audiences and meets performance goals.</p>
-        <p>I hold a BA in Literature & Creative Writing from Columbia University and MAs from Uppsala University and the American University of Paris.</p>
-        <p>I'm currently seeking roles in social media management, editorial content, or content marketing where storytelling, audience engagement, and strategic thinking intersect — with a particular interest in digital media and platform-native brand building.</p>
-      </div>
-      <div class="contact-row">
-        <div>
-          <span class="contact-label">Email</span>
-          <a class="contact-val" href="/cdn-cgi/l/email-protection#4032212229242521352b32293334292c00272d21292c6e232f2d"><span class="__cf_email__" data-cfemail="d0a2b1b2b9b4b5b1a5bba2b9a3a4b9bc90b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span></a>
+      <div class="about-layout">
+        <div class="about-body">
+          <p>I'm a content strategist, editor, and writer with 5+ years of experience across digital media, social platforms, and editorial work. My background spans scriptwriting, developmental editing, and platform-native content creation — from video production and motion graphics to long-form essays and narrative development.</p>
+          <p>At Jellysmack, I scaled social channels from zero to viral through data-driven content strategy and A/B testing. Through my studio, <a href="https://www.studior-m.com" target="_blank" style="color:var(--pink);text-decoration:underline;text-underline-offset:3px;">Studio R–M</a>, I write scripts and copy for digital brands and provide developmental editing for writers who have gone on to publish in The New York Times, Newsweek, and Wired. I also run <a href="https://lemetro.substack.com" target="_blank" style="color:var(--pink);text-decoration:underline;text-underline-offset:3px;">LE MÉTRO</a>, a Substack publication exploring literature and culture through close reading and critique.</p>
+          <p>I approach every project with both editorial rigor and strategic thinking — shaping narratives, building repeatable content systems, and producing work that resonates with audiences and meets performance goals.</p>
+          <p>I hold a BA in Literature & Creative Writing from Columbia University and MAs from Uppsala University and the American University of Paris.</p>
+          <p>I'm currently seeking roles in social media management, editorial content, or content marketing where storytelling, audience engagement, and strategic thinking intersect — with a particular interest in digital media and platform-native brand building.</p>
         </div>
-        <div>
-          <span class="contact-label">Phone</span>
-          <a class="contact-val" href="tel:+13192808530">+1 319 280 8530</a>
+        <div class="about-photo-wrap">
+          <img src="kristil.png" alt="Kristil Rabideau">
         </div>
       </div>
     </div>
   </main>
 </div>
-<div class="ink-drop" id="inkDrop"></div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+<div class="about-footer">
+  <div>
+    <span class="contact-label">Email</span>
+    <a class="contact-val" href="mailto:rabideaukristil@gmail.com">rabideaukristil@gmail.com</a>
+  </div>
+  <div>
+    <span class="contact-label">Phone</span>
+    <a class="contact-val" href="tel:+13192808530">+1 319 280 8530</a>
+  </div>
+</div>
+
+<script>
 (function() {
-  const drop = document.getElementById('inkDrop');
+  const drop = document.createElement('div');
+  drop.className = 'ink-drop';
+  document.body.appendChild(drop);
+
   let cx = -100, cy = -100, px = -100, py = -100;
-  let vx = 0, vy = 0;
 
   document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
   document.addEventListener('mouseleave', () => drop.style.opacity = '0');
   document.addEventListener('mouseenter', () => drop.style.opacity = '1');
 
-  const interactables = 'a, button, .t-cta, .fs-cell, .page-nav a, .sidebar-link';
-  document.querySelectorAll(interactables).forEach(el => {
+  document.querySelectorAll('a, button, .sidebar-link').forEach(el => {
     el.addEventListener('mouseenter', () => drop.classList.add('hovering'));
     el.addEventListener('mouseleave', () => drop.classList.remove('hovering'));
   });
@@ -149,14 +143,16 @@ html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   function tick() {
-    vx = cx - px; vy = cy - py;
-    const speed = Math.sqrt(vx*vx + vy*vy);
-    px = lerp(px, cx, 0.28);
-    py = lerp(py, cy, 0.28);
+    px = lerp(px, cx, 0.28); py = lerp(py, cy, 0.28);
+    drop.style.left = px + 'px'; drop.style.top = py + 'px';
+    requestAnimationFrame(tick);
+  }
+  tick();
 
-    if (!drop.classList.contains('hovering')) {
-      const stretch = Math.min(speed * 0.18, 1.8);
-      const angle = Math.atan2(vy, vx) * 180 / Math.PI;
-      const scaleX = 1 + stretch;
-      const scaleY = Math.max(1 - stretch * 0.45, 0.35);
-      drop.style.transform = `translate(-50%, -50%) rotate(${angle}deg) s
+  // sidebar scroll passthrough
+  const sb = document.querySelector('.sidebar'), sc = document.querySelector('.scroll-area');
+  if (sb && sc) sb.addEventListener('wheel', e => { e.preventDefault(); sc.scrollTop += e.deltaY * 1.2; }, { passive: false });
+})();
+</script>
+</body>
+</html>
