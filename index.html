@@ -18,8 +18,7 @@ html, body { height: 100%; font-family: 'Space Grotesk', sans-serif; font-weight
 .sidebar-link:hover { color: var(--ink); }
 .scroll-area { width: 100%; height: 100vh; overflow-y: auto; overflow-x: hidden; background: #fff; }
 .entry { padding: 2rem var(--inset) 0 var(--sidebar); }
-.entry-video { width: 100%; aspect-ratio: 16/9; min-height: 80px; background: #111; overflow: hidden; position: relative; }
-.entry-video iframe { position: absolute; top: 50%; left: 50%; width: 110%; height: 110%; transform: translate(-50%, -50%); border: none; }
+.entry-video { width: 100%; aspect-ratio: 21/9; min-height: 80px; background: #111; overflow: hidden; position: relative; }
 .entry-video video, .entry-video img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .entry-video-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 .entry-video-ph span { font-size: 0.5rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.18); }
@@ -64,27 +63,28 @@ html, body { height: 100%; font-family: 'Space Grotesk', sans-serif; font-weight
   <main class="scroll-area">
     <div class="entry">
       <div class="entry-video" style="background:#1c1c1c;">
-        <img src="studio-rm.gif" style="width:100%;height:100%;object-fit:cover;" alt="Studio R-M">
+        <img src="studio-rm.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Studio R-M">
       </div>
       <div class="entry-caption">
         <span class="t-title">STUDIO R–M</span><span class="t-sep">|</span>
-        <span class="t-sub">Scriptwriting, Copywriting + Developmental Editing</span><span class="t-sep">|</span>
+        <span class="t-sub">Scriptwriting · Copywriting · Developmental Editing</span><span class="t-sep">|</span>
         <a class="t-cta" href="writers.html">See the work →</a>
       </div>
     </div>
     <div class="entry">
       <div class="entry-video" style="background:#f5f0eb;">
-        <img src="lemetro.gif" style="width:100%;height:100%;object-fit:cover;" alt="LE MÉTRO">
+        <img src="lemetro.jpg" style="width:100%;height:100%;object-fit:cover;" alt="LE MÉTRO">
       </div>
       <div class="entry-caption">
         <span class="t-title">LE MÉTRO</span><span class="t-sep">|</span>
-        <span class="t-sub">Publication · Editorial Direction · Cultural Criticism</span><span class="t-sep">|</span>
+        <span class="t-sub">Publication · Editorial Direction + Cultural Criticism</span><span class="t-sep">|</span>
         <a class="t-cta" href="lemetro.html">See the work →</a>
       </div>
     </div>
     <div class="entry">
       <div class="entry-video">
-        <iframe src="https://player.vimeo.com/video/1173048034?autoplay=1&muted=1&loop=1&controls=0&background=1" frameborder="0" allow="autoplay; fullscreen" style="width:100%;height:100%;position:absolute;top:0;left:0;" allowfullscreen></iframe>
+        <video src="jellysmack.mp4" autoplay muted loop playsinline></video>
+        <div class="entry-video-ph"><span>Jellysmack</span></div>
       </div>
       <div class="entry-caption">
         <span class="t-title">JELLYSMACK</span><span class="t-sep">|</span>
@@ -94,7 +94,8 @@ html, body { height: 100%; font-family: 'Space Grotesk', sans-serif; font-weight
     </div>
     <div class="entry">
       <div class="entry-video">
-        <iframe src="https://player.vimeo.com/video/1173048874?autoplay=1&muted=1&loop=1&controls=0&background=1" frameborder="0" allow="autoplay; fullscreen" style="width:100%;height:100%;position:absolute;top:0;left:0;" allowfullscreen></iframe>
+        <video src="pers.mp4" autoplay muted loop playsinline></video>
+        <div class="entry-video-ph"><span>PERS</span></div>
       </div>
       <div class="entry-caption">
         <span class="t-title">PERS</span><span class="t-sep">|</span>
@@ -104,7 +105,8 @@ html, body { height: 100%; font-family: 'Space Grotesk', sans-serif; font-weight
     </div>
     <div class="entry">
       <div class="entry-video">
-        <iframe src="https://player.vimeo.com/video/1173049455?autoplay=1&muted=1&loop=1&controls=0&background=1" frameborder="0" allow="autoplay; fullscreen" style="width:100%;height:100%;position:absolute;top:0;left:0;" allowfullscreen></iframe>
+        <video src="maison-toto.mp4" autoplay muted loop playsinline></video>
+        <div class="entry-video-ph"><span>Maison Toto</span></div>
       </div>
       <div class="entry-caption">
         <span class="t-title">MAISON TOTO</span><span class="t-sep">|</span>
@@ -124,7 +126,8 @@ html, body { height: 100%; font-family: 'Space Grotesk', sans-serif; font-weight
     </div>
     <div class="entry">
       <div class="entry-video" style="background:#0d0d0d;">
-        <iframe src="https://player.vimeo.com/video/1173050776?autoplay=1&muted=1&loop=1&controls=0&background=1" frameborder="0" allow="autoplay; fullscreen" style="width:100%;height:100%;position:absolute;top:0;left:0;" allowfullscreen></iframe>
+        <video src="nike-boxing.mp4" autoplay muted loop playsinline></video>
+        <div class="entry-video-ph"><span>Nike Boxing · Setting Things on Fire · City of Love</span></div>
       </div>
       <div class="entry-caption">
         <span class="t-title">FILM & SPEC</span><span class="t-sep">|</span>
